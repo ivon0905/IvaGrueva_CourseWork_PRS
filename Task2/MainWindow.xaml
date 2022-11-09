@@ -1,0 +1,39 @@
+﻿<Window x:Class="Task2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Margin="20" ItemsSource="{Binding ListPeople}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="115">
+                        <GridViewColumnHeader Content="Име"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Age}" Width="100">
+                        <GridViewColumnHeader Content="Възраст"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Company.Name}" Width="121">
+                        <GridViewColumnHeader Content="Фирма"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Margin="20"
+            Width="160" Height="30"
+            Content="Зареди данни"
+            Command="{Binding LoadPeopleCommand}"/>
+    </Grid>
+</Window>

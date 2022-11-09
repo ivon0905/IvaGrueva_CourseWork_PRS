@@ -1,0 +1,76 @@
+﻿<Window x:Class="ClientApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="Служители" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Row="0" Grid.ColumnSpan="3"
+            Margin="20" ItemsSource="{Binding ListEmployees}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="120">
+                        <GridViewColumnHeader Content="Име"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Age}" Width="60">
+                        <GridViewColumnHeader Content="Възраст"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Address.City}" Width="100">
+                        <GridViewColumnHeader Content="Град"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Address.Street}" Width="120">
+                        <GridViewColumnHeader Content="Улица"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Address.Number}" Width="50">
+                        <GridViewColumnHeader Content="Номер"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding PhoneNumber}" Width="70">
+                        <GridViewColumnHeader Content="Тел. номер"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Position}" Width="121">
+                        <GridViewColumnHeader Content="Позиция"/>
+                    </GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Department}" Width="121">
+                        <GridViewColumnHeader Content="Отдел"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button
+            Grid.Row="1" Grid.Column="0"
+            HorizontalAlignment="Right" VerticalAlignment="Center"
+            Margin="5"
+            Width="100" Height="25" 
+            Content="Зареди данни"
+            Command="{Binding GetEmployeesInfoCommand}"></Button>
+
+        <Button
+            Grid.Row="1" Grid.Column="1"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            Margin="5"
+            Width="100" Height="25" 
+            Content="Добави нов"
+            Command="{Binding AddNewEmployeeCommand}"></Button>
+
+        <Button
+            Grid.Row="1" Grid.Column="2"
+            HorizontalAlignment="Left" VerticalAlignment="Center"
+            Margin="5"
+            Width="100" Height="25" 
+            Content="Запис"
+            Command="{Binding SaveEmployeesInfoCommand}"></Button>
+    </Grid>
+</Window>
